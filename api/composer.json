@@ -1,0 +1,22 @@
+{
+  "name": "devsergeev/krylasova.ru",
+  "description": "krylasova.ru",
+  "type": "project",
+  "authors": [
+    {
+      "name": "devsergeev",
+      "email": "sergeev.vasily.v@gmail.com"
+    }
+  ],
+  "config": {
+    "sort-packages": true
+  },
+  "require": {
+    "php": "^8.0",
+    "slim/psr7": "^1.3",
+    "slim/slim": "^4.7"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  }
+}
