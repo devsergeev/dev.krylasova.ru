@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Console\HelloCommand;
 use Symfony\Component\Console\Application;
 
 http_response_code(500);
@@ -14,9 +13,15 @@ $container = require __DIR__ . '/../config/container.php';
 
 $app = new Application('Console App');
 
+/**
+ * @var string[]
+ * @psalm-suppress MixedArrayAccess
+*/
 $commands = $container->get('config')['console']['commands'];
-foreach($commands as $commandName) {
-    $app->add($container->get($commandName));
+foreach ($commands as $commandName) {
+    /** @var Symfony\Component\Console\Command\Command */
+    $command = $container->get($commandName);
+    $app->add($command);
 }
 
 $app->run();

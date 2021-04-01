@@ -19,7 +19,10 @@
     "symfony/console": "^5.2"
   },
   "require-dev": {
-    "roave/security-advisories": "dev-latest"
+    "overtrue/phplint": "^2.3",
+    "roave/security-advisories": "dev-latest",
+    "squizlabs/php_codesniffer": "^3.5",
+    "vimeo/psalm": "^4.7"
   },
   "autoload": {
     "psr-4": {
@@ -27,6 +30,10 @@
     }
   },
   "scripts": {
-    "app": "php bin/app.php --ansi"
+    "app": "php bin/app.php --ansi",
+    "psalm": "psalm",
+    "code-check": "phpcs",
+    "code-fix": "phpcbf",
+    "lint": "phplint"
   }
 }
