@@ -1,3 +1,5 @@
 phplint.cache
 phpcs.cache
 psalm.cache
+phpunit.cache
+coverage

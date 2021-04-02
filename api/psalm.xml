@@ -7,11 +7,15 @@
     resolveFromConfigFile="true"
     totallyTyped="true"
 >
+    <plugins>
+        <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
+    </plugins>
     <projectFiles>
         <directory name="bin"/>
         <directory name="config"/>
         <directory name="public"/>
         <directory name="src"/>
+        <directory name="tests"/>
         <ignoreFiles>
             <directory name="vendor"/>
         </ignoreFiles>
