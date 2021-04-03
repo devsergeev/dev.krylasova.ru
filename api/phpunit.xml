@@ -14,7 +14,7 @@
 >
     <testsuites>
         <testsuite name="unit">
-            <directory suffix="Test.php">tests/Unit</directory>
+            <directory suffix="Test.php">src/Http/Test/Unit</directory>
         </testsuite>
         <testsuite name="functional">
             <directory suffix="Test.php">tests/Functional</directory>
@@ -25,10 +25,13 @@
         <include>
             <directory suffix=".php">src</directory>
         </include>
+        <exclude>
+            <directory>src/Http/Test</directory>
+        </exclude>
     </coverage>
 
     <php>
-        <env name="APP_ENV" value="test" force="true"/>
-        <env name="APP_DEBUG" value="1" force="true"/>
+        <env force="true" name="APP_ENV" value="test"/>
+        <env force="true" name="APP_DEBUG" value="1"/>
     </php>
 </phpunit>
