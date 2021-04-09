@@ -48,6 +48,15 @@
     "test-unit-coverage": "php -d xdebug.mode=coverage ./vendor/bin/phpunit --colors=always --testsuite=unit --coverage-html var/coverage",
     "test-functional": "phpunit --colors=always --testsuite=functional",
     "test-functional-coverage": "php -d xdebug.mode=coverage ./vendor/bin/phpunit --colors=always --testsuite=functional --coverage-html var/coverage",
-    "lint": "phplint"
+    "lint": "phplint",
+    "before-commit": [
+      "@clear",
+      "@lint",
+      "@code-fix",
+      "@psalm",
+      "@test-unit",
+      "@test-functional",
+      "@clear"
+    ]
   }
 }
