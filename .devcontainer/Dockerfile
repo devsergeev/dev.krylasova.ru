@@ -1,13 +1,16 @@
 # See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.163.1/containers/php/.devcontainer/base.Dockerfile
 
 # [Choice] PHP version: 8, 8.0, 7, 7.4, 7.3
-ARG VARIANT="8"
+ARG VARIANT
 FROM mcr.microsoft.com/vscode/devcontainers/php:0-${VARIANT}
 
 # [Option] Install Node.js
-ARG INSTALL_NODE="true"
-ARG NODE_VERSION="lts/*"
+ARG INSTALL_NODE
+ARG NODE_VERSION
 RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
+
+# Change document root for Apache
+RUN sed -i -e 's|/var/www/html|/var/www/html/api/public|g' /etc/apache2/sites-available/000-default.conf
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
