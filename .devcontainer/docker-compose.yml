@@ -14,6 +14,8 @@ services:
         - /var/lib/docker/volumes/vscode/_data:/vscode
     environment:
       VIRTUAL_HOST: dev.krylasova.local
+      APP_ENV: dev
+      APP_DEBUG: 1
 
   mysql:
     environment:
