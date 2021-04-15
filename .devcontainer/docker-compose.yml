@@ -2,26 +2,26 @@ services:
 
   api:
     container_name: devkrylasovaru-api
-    environment:
-      - VIRTUAL_HOST=dev.krylasova.local
     build:
-        context: .
-        dockerfile: Dockerfile
-        args:
-            VARIANT: "8"
-            INSTALL_NODE: "true"
-            NODE_VERSION: "lts/*"
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VARIANT: "8"
+        INSTALL_NODE: "true"
+        NODE_VERSION: "lts/*"
     volumes:
         - /home/sergeev/www/dev.krylasova.ru:/var/www/html
         - /var/lib/docker/volumes/vscode/_data:/vscode
+    environment:
+      VIRTUAL_HOST: dev.krylasova.local
 
   mysql:
     environment:
-        - VIRTUAL_HOST=mysql.krylasova.local
+      VIRTUAL_HOST: mysql.krylasova.local
     image: mysql:5.7.27
     environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_DATABASE=devkrylasova
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: devkrylasova
     ports:
       - 33061:3306
     command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
@@ -35,4 +35,4 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
 
     environment:
-      - VIRTUAL_HOST=dev.krylasova.local
+      VIRTUAL_HOST: dev.krylasova.local
