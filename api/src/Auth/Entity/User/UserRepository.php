@@ -7,7 +7,7 @@ namespace App\Auth\Entity\User;
 interface UserRepository
 {
     public function hasByEmail(Email $email): bool;
-    public function hasByNetwork(NetworkIdentity $identity): bool;
+    public function hasByNetwork(Network $network): bool;
     public function findByJoinConfirmToken(string $token): ?User;
     public function findByPasswordResetToken(string $token): ?User;
     public function findByNewEmailToken(string $token): ?User;

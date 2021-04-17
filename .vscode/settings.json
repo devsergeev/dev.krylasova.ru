@@ -9,5 +9,8 @@
     },
     "[php]": {
         "editor.tabSize": 4,
-    } 
+    },
+    "[yml]": {
+        "editor.tabSize": 2,
+    },
 }
