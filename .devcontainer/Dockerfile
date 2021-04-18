@@ -4,13 +4,15 @@
 ARG VARIANT
 FROM mcr.microsoft.com/vscode/devcontainers/php:0-${VARIANT}
 
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+# Change document root for Apache
+RUN sed -i -e 's|/var/www/html|/var/www/html/api/public|g' /etc/apache2/sites-available/000-default.conf
+
 # [Option] Install Node.js
 ARG INSTALL_NODE
 ARG NODE_VERSION
 RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
-
-# Change document root for Apache
-RUN sed -i -e 's|/var/www/html|/var/www/html/api/public|g' /etc/apache2/sites-available/000-default.conf
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \

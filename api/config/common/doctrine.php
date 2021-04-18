@@ -66,7 +66,7 @@ return [
                 'user' => getenv('DB_USER'),
                 'password' => getenv('DB_PASSWORD'),
                 'dbname' => getenv('DB_NAME'),
-                'charset' => 'utf-8'
+                'charset' => 'utf8'
             ],
             'metadata_dirs' => [
                 __DIR__ . '/../../src/Auth/Entity'
