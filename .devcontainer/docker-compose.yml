@@ -23,6 +23,7 @@ services:
 
   mysql:
     image: mysql:5.7.27
+    container_name: devkrylasovaru-mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: devkrylasova
