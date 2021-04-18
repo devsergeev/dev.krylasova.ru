@@ -21,7 +21,6 @@ $app = new Application('Console App');
 */
 $commands = $container->get('config')['console']['commands'];
 
-/** @var EntityManagerInterface $entityManager */
 $entityManager = $container->get(EntityManagerInterface::class);
 $app->getHelperSet()->set(new EntityManagerHelper($entityManager), 'em');
 

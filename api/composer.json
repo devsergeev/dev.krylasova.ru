@@ -24,6 +24,7 @@
     "webmozart/assert": "^1.10"
   },
   "require-dev": {
+    "lctrs/psalm-psr-container-plugin": "^1.1",
     "overtrue/phplint": "^2.3",
     "phpunit/phpunit": "^9.5",
     "psalm/plugin-phpunit": "^0.15.1",

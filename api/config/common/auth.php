@@ -9,7 +9,6 @@ use Psr\Container\ContainerInterface;
 
 return [
     UserRepository::class => function (ContainerInterface $container): UserRepository {
-        /** @var EntityManagerInterface $em */
         $em = $container->get(EntityManagerInterface::class);
         /** @psalm-var Doctrine\ORM\EntityRepository<User> $repo */
         $repo = $em->getRepository(User::class);
