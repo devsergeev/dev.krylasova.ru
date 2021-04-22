@@ -40,3 +40,9 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
     environment:
       VIRTUAL_HOST: dev.krylasova.local
+
+  mailer:
+    image: mailhog/mailhog
+    container_name: devkrylasovaru-mailer
+    ports:
+      - 8025:8025
