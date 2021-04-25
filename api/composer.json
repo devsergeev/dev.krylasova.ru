@@ -23,6 +23,7 @@
     "slim/slim": "^4.7",
     "swiftmailer/swiftmailer": "^6.2",
     "symfony/console": "^5.2",
+    "twig/twig": "^3.3",
     "webmozart/assert": "^1.10"
   },
   "require-dev": {
