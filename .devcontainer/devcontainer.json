@@ -17,6 +17,7 @@
 		"mrmlnc.vscode-apache",
         "ikappas.composer",
         "dotjoshjohnson.xml",
+        "whatwedo.twig",
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
