@@ -48,6 +48,10 @@
     }
   },
   "scripts": {
+    "post-install-cmd": [
+        "chmod 777 -R ./var"
+    ],
+
     "app": "php bin/app.php --ansi",
     "clear": "rm -rf var/cache/* var/log/* var/test/*",
     "code-check": "phpcs",
