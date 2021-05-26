@@ -50,7 +50,7 @@
   },
   "scripts": {
     "post-install-cmd": [
-        "chmod 777 -R ./var"
+        "sudo chown www-data:www-data ./var -R"
     ],
 
     "app": "php bin/app.php --ansi",
