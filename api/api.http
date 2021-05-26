@@ -1,0 +1,5 @@
+GET http://dev.krylasova.local/
+Accept: application/json
+###
+GET http://dev.krylasova.local/not-found
+Accept: application/json
