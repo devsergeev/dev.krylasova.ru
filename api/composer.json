@@ -13,6 +13,7 @@
   },
   "require": {
     "php": "^8.0",
+    "dms/phpunit-arraysubset-asserts": "^0.3.0",
     "doctrine/migrations": "^3.1",
     "doctrine/orm": "^2.8",
     "finesse/swiftmailer-defaults-plugin": "^2.0",
