@@ -3,3 +3,11 @@ Accept: application/json
 ###
 GET http://dev.krylasova.local/not-found
 Accept: application/json
+###
+POST http://dev.krylasova.local/v1/auth/join
+content-type: application/json
+
+{
+    "email": "new-user@app.test",
+    "password": "new-password"
+}
