@@ -27,7 +27,7 @@ services:
       MAILER_ENCRYPTION: tcp
       MAILER_FROM_EMAIL: mail@app.test
       FRONTEND_URL: https://dev.krylasova.local
-      SENTRY_DSN: https://6616c274402d464fad3deb3ccd34c2ab@o733117.ingest.sentry.io/5784548
+      # SENTRY_DSN: https://6616c274402d464fad3deb3ccd34c2ab@o733117.ingest.sentry.io/5784548
 
   mysql:
     image: mysql:5.7.27
