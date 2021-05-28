@@ -27,9 +27,9 @@ class RequestAction implements RequestHandlerInterface
         /**
          * @psalm-var array{email:?string, password:?string} $data
          */
-        $data = json_decode((string)$request->getBody(), true);
+        $data = $request->getParsedBody();
 
-        $command = new Command();
+         $command = new Command();
         $command->email = trim($data['email'] ?? '');
         $command->password = trim($data['password'] ?? '');
 
