@@ -17,6 +17,7 @@
     "doctrine/migrations": "^3.1",
     "doctrine/orm": "^2.8",
     "finesse/swiftmailer-defaults-plugin": "^2.0",
+    "guzzlehttp/guzzle": "^7.3",
     "laminas/laminas-config-aggregator": "^1.5",
     "monolog/monolog": "^2.2",
     "php-di/php-di": "^6.3",
