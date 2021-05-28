@@ -56,24 +56,26 @@
     ],
 
     "app": "php bin/app.php --ansi",
-    "clear": "rm -rf var/cache/* var/log/* var/test/*",
+    "clear": "sudo rm -rf var/cache/* var/log/* var/test/*",
     "code-check": "phpcs",
     "code-fix": "phpcbf",
-    "psalm": "psalm",
-    "test-unit": "phpunit --colors=always --testsuite=unit",
-    "test-unit-coverage": "php -d xdebug.mode=coverage ./vendor/bin/phpunit --colors=always --testsuite=unit --coverage-html var/test/coverage",
-    "test-functional": "phpunit --colors=always --testsuite=functional",
-    "test-functional-coverage": "php -d xdebug.mode=coverage ./vendor/bin/phpunit --colors=always --testsuite=functional --coverage-html var/test/coverage",
     "lint": "phplint",
+    "psalm": "psalm",
+    "test-functional-coverage": "php -d xdebug.mode=coverage ./vendor/bin/phpunit --colors=always --testsuite=functional --coverage-html var/test/coverage",
+    "test-functional": "phpunit --colors=always --testsuite=functional",
+    "test-unit-coverage": "php -d xdebug.mode=coverage ./vendor/bin/phpunit --colors=always --testsuite=unit --coverage-html var/test/coverage",
+    "test-unit": "phpunit --colors=always --testsuite=unit",
+    "test" : [
+      "@test-unit",
+      "@test-functional"
+    ],
     "validate-schema": "@app orm:validate-schema",
     "check": [
       "@validate-schema",
-      "@clear",
       "@lint",
       "@code-fix",
       "@psalm",
-      "@test-unit",
-      "@test-functional",
+      "@test",
       "@clear"
     ]
   }
