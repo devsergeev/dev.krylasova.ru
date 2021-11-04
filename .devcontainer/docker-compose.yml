@@ -1,5 +1,4 @@
 services:
-
   api:
     container_name: devkrylasovaru-api
     build:
@@ -10,8 +9,8 @@ services:
         INSTALL_NODE: "true"
         NODE_VERSION: "lts/*"
     volumes:
-        - /home/sergeev/www/dev.krylasova.ru:/var/www/html
-        - /var/lib/docker/volumes/vscode/_data:/vscode
+      - /home/sergeev/www/dev.krylasova.ru:/var/www/html
+      - /var/lib/docker/volumes/vscode/_data:/vscode
     environment:
       VIRTUAL_HOST: dev.krylasova.local
       APP_ENV: dev
@@ -37,7 +36,12 @@ services:
       MYSQL_DATABASE: devkrylasova
     ports:
       - 33061:3306
-    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    command:
+      [
+        "mysqld",
+        "--character-set-server=utf8mb4",
+        "--collation-server=utf8mb4_unicode_ci",
+      ]
 
   nginx-proxy:
     image: jwilder/nginx-proxy
