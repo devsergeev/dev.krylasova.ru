@@ -1,7 +1,7 @@
 {
   "name": "PHP",
   "dockerComposeFile": "docker-compose.yml",
-  "service": "api",
+  "service": "backend",
   "workspaceFolder": "/var/www/html",
   // Set *default* container specific settings.json values on container create.
   "settings": {
