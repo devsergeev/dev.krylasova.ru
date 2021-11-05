@@ -1,4 +1,28 @@
 RewriteEngine On
+
+# static page
+RewriteCond %{REQUEST_URI} !^/index$
+RewriteCond %{DOCUMENT_ROOT}/staticPages/%{REQUEST_URI}.html -f
+RewriteRule ^ staticPages/%{REQUEST_URI}.html [END]
+
+# main (index) static page
+RewriteCond %{REQUEST_URI} ^/$
+RewriteCond %{DOCUMENT_ROOT}/staticPages/index.html -f
+RewriteRule ^ staticPages/index.html [END]
+
+# A AND B
+RewriteRule ^ - [E=IS_STATIC_PAGE:False]
+RewriteCond %{REQUEST_URI} ^/staticPages
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [E=IS_STATIC_PAGE:True]
+
+# C AND D
+RewriteRule ^ - [E=IS_NOT_FILE:False]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.php [QSA,L]
+RewriteRule ^ - [E=IS_NOT_FILE:True]
+
+# (A AND B) OR (C AND D)
+RewriteCond %{ENV:IS_STATIC_PAGE} =True [OR]
+RewriteCond %{ENV:IS_NOT_FILE} =True
+RewriteRule ^ index.php [QSA,L,END]
