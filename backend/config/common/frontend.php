@@ -12,7 +12,6 @@ return [
          * @psalm-var array{url:string} $config
          */
         $config = $container->get('config')['frontend'];
-
         return new FrontendUrlGenerator($config['url']);
     },
 

@@ -11,17 +11,13 @@ use Psr\Container\ContainerInterface;
 return [
     DependencyFactory::class => static function (ContainerInterface $container) {
         $entityManager = $container->get(EntityManagerInterface::class);
-
         $configuration = new Doctrine\Migrations\Configuration\Configuration();
         $configuration->addMigrationsDirectory('App\Data\Migration', __DIR__ . '/../../src/Data/Migration');
         $configuration->setAllOrNothing(true);
         $configuration->setCheckDatabasePlatform(false);
-
         $storageConfiguration = new Migrations\Metadata\Storage\TableMetadataStorageConfiguration();
         $storageConfiguration->setTableName('migrations');
-
         $configuration->setMetadataStorageConfiguration($storageConfiguration);
-
         return DependencyFactory::fromEntityManager(
             new Migrations\Configuration\Migration\ExistingConfiguration($configuration),
             new Migrations\Configuration\EntityManager\ExistingEntityManager($entityManager)

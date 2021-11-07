@@ -19,30 +19,24 @@ return [
          * } $config
          */
         $config = $container->get('config')['twig'];
-
         $loader = new FilesystemLoader();
-
         foreach ($config['template_dirs'] as $alias => $dir) {
             $loader->addPath($dir, $alias);
         }
-
         $environment = new Environment($loader, [
             'cache' => $config['debug'] ? false : $config['cache_dir'],
             'debug' => $config['debug'],
             'strict_variables' => $config['debug'],
             'auto_reload' => $config['debug'],
         ]);
-
         if ($config['debug']) {
             $environment->addExtension(new DebugExtension());
         }
-
         foreach ($config['extensions'] as $class) {
             /** @var ExtensionInterface $extension */
             $extension = $container->get($class);
             $environment->addExtension($extension);
         }
-
         return $environment;
     },
 

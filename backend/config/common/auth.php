@@ -22,7 +22,6 @@ return [
          * @psalm-var array{token_ttl:string} $config
          */
         $config = $container->get('config')['auth'];
-
         return new Tokenizer(new DateInterval($config['token_ttl']));
     },
 

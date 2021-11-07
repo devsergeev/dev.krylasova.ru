@@ -18,15 +18,11 @@ return [
          * } $config
          */
         $config = $container->get('config')['logger'];
-
         $level = $config['debug'] ? Logger::DEBUG : Logger::INFO;
-
         $log = new Logger('API');
-
         if (!empty($config['file'])) {
             $log->pushHandler(new StreamHandler($config['file'], $level));
         }
-
         return $log;
     },
 
