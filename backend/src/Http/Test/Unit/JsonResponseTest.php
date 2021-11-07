@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Test\Unit\Http;
 
-use App\Http\JsonResponse;
+use App\Http\Response\JsonResponse;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
