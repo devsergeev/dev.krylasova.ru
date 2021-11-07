@@ -1,11 +1,14 @@
 <?xml version="1.0"?>
 <psalm
-    cacheDirectory="./var/cache/psalm.cache"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
     xmlns="https://getpsalm.org/schema/config"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+    reportMixedIssues="true"
     resolveFromConfigFile="true"
-    totallyTyped="true"
+    findUnusedCode="false"
+    findUnusedPsalmSuppress="true"
+    cacheDirectory="./var/cache/psalm.cache"
 >
     <plugins>
         <pluginClass class="Psalm\PhpUnitPlugin\Plugin"/>
