@@ -16,7 +16,6 @@ class HomeTest extends WebTestCase
     {
         $response = $this->app()->handle(self::json('GET', '/'));
         self::assertEquals(200, $response->getStatusCode());
-        self::assertEquals('application/json', $response->getHeaderLine('Content-Type'));
-        self::assertEquals('{}', (string)$response->getBody());
+        self::assertEquals('text/html', $response->getHeaderLine('Content-Type'));
     }
 }
