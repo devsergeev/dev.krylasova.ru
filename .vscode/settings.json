@@ -1,16 +1,19 @@
 {
-    "editor.insertSpaces": true,
-    "editor.detectIndentation": false,
-    "[html]": {
-        "editor.tabSize": 2,
-    },
-    "[json]": {
-        "editor.tabSize": 2,
-    },
-    "[php]": {
-        "editor.tabSize": 4,
-    },
-    "[yml]": {
-        "editor.tabSize": 2,
-    },
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "[html]": {
+    "editor.tabSize": 2,
+  },
+  "[json]": {
+    "editor.tabSize": 2,
+  },
+  "[php]": {
+    "editor.tabSize": 4,
+  },
+  "[yml]": {
+    "editor.tabSize": 2,
+  },
+  "files.associations": {
+    "*.twig": "html"
+  }
 }
