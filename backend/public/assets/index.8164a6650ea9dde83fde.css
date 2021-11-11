@@ -28,9 +28,10 @@ h1 {
   display: block;
   height: 50px;
   width: 50px;
-  background-image: url('./icon.png');
+  background-image: url(/assets/73c16bd9781e8bbf7776.png);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   margin-right: 0.5rem;
 }
+
