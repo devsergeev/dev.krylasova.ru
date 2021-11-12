@@ -1,7 +1,9 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+
+console.log(path.resolve(__dirname, './frontend/index.html.twig'))
 
 module.exports = (env, options) => {
   const isProd = options.mode === 'production'
@@ -14,9 +16,9 @@ module.exports = (env, options) => {
       }),
       new HtmlWebpackPlugin({
         title: options.mode,
-        template: path.resolve(__dirname, './src/index.html.twig'),
-        filename: path.resolve(__dirname, '../backend/templates/index.html.twig'),
-        favicon: './src/favicon.svg',
+        template: path.resolve(__dirname, './frontend/index.html.twig'),
+        filename: path.resolve(__dirname, './templates/index.html.twig'),
+        favicon: './frontend/favicon.svg',
         alwaysWriteToDisk: true
       }),
       new HtmlWebpackHarddiskPlugin(),
@@ -42,11 +44,11 @@ module.exports = (env, options) => {
   return {
     //target: isDev ? 'web' : ['web', 'es5'],
     entry: {
-      index: './src/index.js',
+      index: './frontend/index.js',
     },
     output: {
       filename: '[name].[contenthash].js',
-      path: path.resolve(__dirname, '../backend/public/assets'),
+      path: path.resolve(__dirname, './public/assets'),
       publicPath: '/assets/',
       clean: true,
     },
@@ -70,7 +72,7 @@ module.exports = (env, options) => {
         progress: true,
       },
       static: {
-        directory: path.resolve(__dirname, '../backend/public/assets'),
+        directory: path.resolve(__dirname, './public/assets'),
         publicPath: '/assets/',
       },
       port: 3000,
@@ -87,12 +89,12 @@ module.exports = (env, options) => {
       rules: [
         {
           test: /\.css$/i,
-          include: path.resolve(__dirname, 'src'),
+          include: path.resolve(__dirname, './frontend'),
           use: cssLoaders(),
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          include: path.resolve(__dirname, 'src'),
+          include: path.resolve(__dirname, './frontend'),
           type: 'asset/resource',
         },
       ],
