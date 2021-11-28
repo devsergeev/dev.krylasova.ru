@@ -15,6 +15,9 @@ module.exports = () => {
     entry: {
       index: './frontend/index.js',
     },
+    resolve: {
+      extensions: ["*", ".js", ".jsx"],
+    },
     output: {
       filename: '[name].[contenthash].js',
       path: path.resolve(__dirname, './public/assets'),
@@ -37,7 +40,7 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         title: MODE,
-        template: path.resolve(__dirname, './frontend/index.html.twig'),
+        template: path.resolve(__dirname, './frontend/templates/index.html.twig'),
         filename: path.resolve(__dirname, './templates/index.html.twig'),
         favicon: './frontend/favicon.svg',
         alwaysWriteToDisk: true
@@ -45,6 +48,14 @@ module.exports = () => {
     ],
     module: {
       rules: [
+        {
+          test: /\.(js|jsx)$/,
+          include: path.resolve(__dirname, './frontend'),
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/env"],
+          }
+        },
         {
           test: /\.css$/i,
           include: path.resolve(__dirname, './frontend'),
