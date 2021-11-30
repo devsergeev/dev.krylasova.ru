@@ -56,7 +56,7 @@
       "sudo chmod -R 777 ./var"
     ],
     "app": "php -d xdebug.mode=off bin/app.php --ansi",
-    "clear": "sudo rm -rf var/cache/* var/log/* var/test/*",
+    "clear": "rm -rf var/cache/* var/log/* var/test/*",
     "code-check": "php -d xdebug.mode=off ./vendor/bin/phpcs",
     "code-fix": "php -d xdebug.mode=off ./vendor/bin/phpcbf",
     "lint": "php -d xdebug.mode=off ./vendor/bin/phplint",
