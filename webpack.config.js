@@ -75,6 +75,7 @@ module.exports = () => {
 
   if (START) {
     config.devServer = {
+      allowedHosts: 'all',
       client: {
         overlay: true,
         progress: true,
@@ -83,12 +84,12 @@ module.exports = () => {
         directory: path.resolve(__dirname, './public/assets'),
         publicPath: '/assets/',
       },
-      port: 3000,
+      port: 80,
       hot: true,
       liveReload: false,
       proxy: {
         path: '**',
-        target: 'http://dev.krylasova.local',
+        target: 'http://php',
         secure: false,
       },
     }

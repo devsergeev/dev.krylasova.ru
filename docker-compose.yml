@@ -1,16 +1,11 @@
 services:
-  backend:
-    container_name: devkrylasovaru-backend
+  php:
+    container_name: devkrylasovaru-php
     build:
       context: .
-      dockerfile: Dockerfile
-      args:
-        VARIANT: "8"
-        INSTALL_NODE: "true"
-        NODE_VERSION: "lts/*"
+      dockerfile: docker/dev/Dockerfile
     volumes:
-      - /home/sergeev/www/dev.krylasova.ru:/var/www/html
-      - /var/lib/docker/volumes/vscode/_data:/vscode
+      - .:/var/www/html
     environment:
       VIRTUAL_HOST: dev.krylasova.local
       APP_ENV: dev
@@ -27,6 +22,21 @@ services:
       MAILER_FROM_EMAIL: mail@app.test
       FRONTEND_URL: https://dev.krylasova.local
       SENTRY_DSN: https://6616c274402d464fad3deb3ccd34c2ab@o733117.ingest.sentry.io/5784548
+
+  node:
+    depends_on:
+      - php
+    container_name: devkrylasovaru-node
+    image: "node:16"
+    user: "node"
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+    expose:
+      - 80
+    tty: true
+    environment:
+      VIRTUAL_HOST: node.krylasova.local
 
   mysql:
     image: mysql:5.7.27
@@ -51,7 +61,7 @@ services:
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
     environment:
-      VIRTUAL_HOST: dev.krylasova.local
+      VIRTUAL_HOST: dev.krylasova.local,node.krylasova.local
 
   mailer:
     image: mailhog/mailhog
