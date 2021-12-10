@@ -1,11 +1,10 @@
 services:
-  php:
-    container_name: devkrylasovaru-php
+  php-apache:
+    container_name: ${COMPOSE_PROJECT_NAME}-php-apache
     build:
-      context: .
-      dockerfile: docker/dev/Dockerfile
+      context: docker/php-apache
     volumes:
-      - .:/var/www/html
+      - ..:/var/www/html
     environment:
       VIRTUAL_HOST: dev.krylasova.local
       APP_ENV: dev
@@ -24,14 +23,14 @@ services:
       SENTRY_DSN: https://6616c274402d464fad3deb3ccd34c2ab@o733117.ingest.sentry.io/5784548
 
   node:
-    depends_on:
-      - php
-    container_name: devkrylasovaru-node
+    container_name: ${COMPOSE_PROJECT_NAME}-node
     image: "node:16"
     user: "node"
     working_dir: /home/node/app
     volumes:
-      - ./:/home/node/app
+      - ../frontend:/home/node/app
+      - ../public/assets:/home/node/app/dist/assets
+      - ../templates:/home/node/app/dist/templates
     expose:
       - 80
     tty: true
@@ -39,8 +38,8 @@ services:
       VIRTUAL_HOST: node.krylasova.local
 
   mysql:
+    container_name: ${COMPOSE_PROJECT_NAME}-mysql
     image: mysql:5.7.27
-    container_name: devkrylasovaru-mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: devkrylasova
@@ -54,8 +53,8 @@ services:
       ]
 
   nginx-proxy:
+    container_name: ${COMPOSE_PROJECT_NAME}-nginx-proxy
     image: jwilder/nginx-proxy
-    container_name: devkrylasovaru-nginx-proxy
     ports:
       - 80:80
     volumes:
@@ -64,7 +63,7 @@ services:
       VIRTUAL_HOST: dev.krylasova.local,node.krylasova.local
 
   mailer:
+    container_name: ${COMPOSE_PROJECT_NAME}-mailer
     image: mailhog/mailhog
-    container_name: devkrylasovaru-mailer
     ports:
       - 8025:8025

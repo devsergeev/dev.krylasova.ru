@@ -13,14 +13,14 @@ module.exports = () => {
   const config = {
     mode: MODE,
     entry: {
-      index: './frontend/index.js',
+      index: './src/index.js',
     },
     resolve: {
       extensions: ["*", ".js", ".jsx"],
     },
     output: {
       filename: '[name].[contenthash].js',
-      path: path.resolve(__dirname, './public/assets'),
+      path: path.resolve(__dirname, './dist/assets'),
       publicPath: '/assets/',
       clean: true,
     },
@@ -40,9 +40,9 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         title: MODE,
-        template: path.resolve(__dirname, './frontend/templates/index.html.twig'),
-        filename: path.resolve(__dirname, './templates/index.html.twig'),
-        favicon: './frontend/favicon.svg',
+        template: path.resolve(__dirname, './src/templates/index.html.twig'),
+        filename: path.resolve(__dirname, './dist/templates/index.html.twig'),
+        favicon: './src/favicon.svg',
         alwaysWriteToDisk: true
       }),
     ],
@@ -50,7 +50,7 @@ module.exports = () => {
       rules: [
         {
           test: /\.(js|jsx)$/,
-          include: path.resolve(__dirname, './frontend'),
+          include: path.resolve(__dirname, './src'),
           loader: "babel-loader",
           options: {
             presets: ["@babel/env"],
@@ -58,7 +58,7 @@ module.exports = () => {
         },
         {
           test: /\.css$/i,
-          include: path.resolve(__dirname, './frontend'),
+          include: path.resolve(__dirname, './src'),
           use: [
             PROD ? MiniCssExtractPlugin.loader : "style-loader",
             'css-loader'
@@ -66,7 +66,7 @@ module.exports = () => {
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          include: path.resolve(__dirname, './frontend'),
+          include: path.resolve(__dirname, './src'),
           type: 'asset/resource',
         },
       ],
@@ -81,7 +81,7 @@ module.exports = () => {
         progress: true,
       },
       static: {
-        directory: path.resolve(__dirname, './public/assets'),
+        directory: path.resolve(__dirname, './dist/public/assets'),
         publicPath: '/assets/',
       },
       port: 80,
@@ -89,7 +89,7 @@ module.exports = () => {
       liveReload: false,
       proxy: {
         path: '**',
-        target: 'http://php',
+        target: 'http://php-apache',
         secure: false,
       },
     }
