@@ -2,7 +2,7 @@ services:
   php-apache:
     container_name: ${COMPOSE_PROJECT_NAME}-php-apache
     build:
-      context: docker/php-apache
+      context: php-apache
     volumes:
       - ..:/var/www/html
     environment:
