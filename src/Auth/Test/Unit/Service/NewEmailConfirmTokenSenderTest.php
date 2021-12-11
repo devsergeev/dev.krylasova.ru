@@ -28,7 +28,7 @@ class NewEmailConfirmTokenSenderTest extends TestCase
 
         $twig = $this->createMock(Environment::class);
         $twig->expects($this->once())->method('render')->with(
-            $this->equalTo('auth/email/confirm.html.twig'),
+            $this->equalTo('mail/auth/email/confirm.html.twig'),
             $this->equalTo(['token' => $token]),
         )->willReturn($body = '<a href="' . $confirmUrl . '">' . $confirmUrl . '</a>');
 

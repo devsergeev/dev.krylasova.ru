@@ -23,7 +23,7 @@ class HomeAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         return new HtmlResponse(
-            $this->template->render('index.html.twig', ['variable' => 'Twig'])
+            $this->template->render('site/views/home.html.twig', ['variable' => 'Twig'])
         );
     }
 }

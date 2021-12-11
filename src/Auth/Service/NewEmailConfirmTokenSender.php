@@ -26,7 +26,7 @@ class NewEmailConfirmTokenSender
     {
         $message = (new Swift_Message('New Email Confirmation'))
             ->setTo($email->getValue())
-            ->setBody($this->twig->render('auth/email/confirm.html.twig', ['token' => $token]), 'text/html');
+            ->setBody($this->twig->render('mail/auth/email/confirm.html.twig', ['token' => $token]), 'text/html');
 
         if ($this->mailer->send($message) === 0) {
             throw new RuntimeException('Unable to send email.');

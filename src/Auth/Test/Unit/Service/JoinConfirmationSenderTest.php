@@ -28,7 +28,7 @@ class JoinConfirmationSenderTest extends TestCase
 
         $twig = $this->createMock(Environment::class);
         $twig->expects($this->once())->method('render')->with(
-            $this->equalTo('auth/join/confirm.html.twig'),
+            $this->equalTo('mail/auth/join/confirm.html.twig'),
             $this->equalTo(['token' => $token]),
         )->willReturn($body = '<a href="' . $confirmUrl . '">' . $confirmUrl . '</a>');
 

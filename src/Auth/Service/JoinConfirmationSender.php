@@ -26,7 +26,7 @@ class JoinConfirmationSender
     {
         $message = (new Swift_Message('Подтверждение регистрации'))
             ->setTo($email->getValue())
-            ->setBody($this->twig->render('auth/join/confirm.html.twig', ['token' => $token]), 'text/html');
+            ->setBody($this->twig->render('mail/auth/join/confirm.html.twig', ['token' => $token]), 'text/html');
 
         if ($this->mailer->send($message) === 0) {
             throw new RuntimeException('Ошибка отправки электронного письма.');

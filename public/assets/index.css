@@ -3928,7 +3928,7 @@ a:hover .img-thumbnail {
   right: 0;
   opacity: 0;
   transition: opacity .5s;
-  background-image: url("images/animations/slides.png");
+  background-image: url(/assets/80b329bb9e006281fd05.png);
   background-size: 100%;
   background-repeat: no-repeat;
   background-position-x: 0;
@@ -4028,3 +4028,4 @@ a:hover .img-thumbnail {
 .imaged-link__text:hover {
   opacity: 1;
 }
+

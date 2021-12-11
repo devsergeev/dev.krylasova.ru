@@ -19,7 +19,7 @@ module.exports = () => {
       extensions: ["*", ".js", ".jsx"],
     },
     output: {
-      filename: '[name].[contenthash].js',
+      filename: '[name].js?v=[contenthash]',
       path: path.resolve(__dirname, './dist/assets'),
       publicPath: '/assets/',
       clean: true,
@@ -39,9 +39,8 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        title: MODE,
-        template: path.resolve(__dirname, './src/templates/index.html.twig'),
-        filename: path.resolve(__dirname, './dist/templates/index.html.twig'),
+        template: path.resolve(__dirname, './src/templates/layouts/main.html.twig'),
+        filename: path.resolve(__dirname, './dist/templates/site/layouts/main.html.twig'),
         favicon: './src/favicon.svg',
         alwaysWriteToDisk: true
       }),
@@ -86,7 +85,7 @@ module.exports = () => {
       },
       port: 80,
       hot: true,
-      liveReload: false,
+      liveReload: true,
       proxy: {
         path: '**',
         target: 'http://php-apache',
@@ -101,8 +100,8 @@ module.exports = () => {
 
   if (PROD) {
     config.plugins.push(new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
-      chunkFilename: "[id].[contenthash].css",
+      filename: "[name].css?v=[contenthash]",
+      chunkFilename: "[id].css?v=[contenthash]",
     }))
   }
 

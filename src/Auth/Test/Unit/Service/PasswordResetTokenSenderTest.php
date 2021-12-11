@@ -28,7 +28,7 @@ class PasswordResetTokenSenderTest extends TestCase
 
         $twig = $this->createMock(Environment::class);
         $twig->expects($this->once())->method('render')->with(
-            $this->equalTo('auth/password/confirm.html.twig'),
+            $this->equalTo('mail/auth/password/confirm.html.twig'),
             $this->equalTo(['token' => $token]),
         )->willReturn($body = '<a href="' . $confirmUrl . '">' . $confirmUrl . '</a>');
 

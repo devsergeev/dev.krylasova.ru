@@ -26,7 +26,7 @@ class PasswordResetTokenSender
     {
         $message = (new Swift_Message('Password Reset'))
             ->setTo($email->getValue())
-            ->setBody($this->twig->render('auth/password/confirm.html.twig', ['token' => $token]), 'text/html');
+            ->setBody($this->twig->render('mail/auth/password/confirm.html.twig', ['token' => $token]), 'text/html');
 
         if ($this->mailer->send($message) === 0) {
             throw new RuntimeException('Unable to send email.');
