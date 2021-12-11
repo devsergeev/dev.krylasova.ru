@@ -53,18 +53,18 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "sudo chmod -R 777 ./var"
+      "chmod -R 777 ./var"
     ],
-    "app": "php -d xdebug.mode=off bin/app.php --ansi",
+    "app": "php bin/app.php --ansi",
     "clear": "rm -rf var/cache/* var/log/* var/test/*",
-    "code-check": "php -d xdebug.mode=off ./vendor/bin/phpcs",
-    "code-fix": "php -d xdebug.mode=off ./vendor/bin/phpcbf",
-    "lint": "php -d xdebug.mode=off ./vendor/bin/phplint",
-    "psalm": "php -d xdebug.mode=off ./vendor/bin/psalm --show-info=true",
-    "test-functional-coverage": "php -d xdebug.mode=coverage ./vendor/bin/phpunit --colors=always --testsuite=functional --coverage-html var/test/coverage",
-    "test-functional": "php -d xdebug.mode=off ./vendor/bin/phpunit --colors=always --testsuite=functional",
-    "test-unit-coverage": "php -d xdebug.mode=coverage ./vendor/bin/phpunit --colors=always --testsuite=unit --coverage-html var/test/coverage",
-    "test-unit": "php -d xdebug.mode=off ./vendor/bin/phpunit --colors=always --testsuite=unit",
+    "lint": "phplint",
+    "phpcs": "phpcs --standard=phpcs.xml",
+    "phpcbf": "phpcbf --standard=phpcs.xml",
+    "psalm": "psalm --config=psalm.xml --show-info=true",
+    "test-functional-coverage": "XDEBUG_MODE=coverage phpunit --colors=always --testsuite=functional --coverage-html var/test/coverage",
+    "test-functional": "phpunit --colors=always --testsuite=functional",
+    "test-unit-coverage": "XDEBUG_MODE=coverage phpunit --colors=always --testsuite=unit --coverage-html var/test/coverage",
+    "test-unit": "phpunit --colors=always --testsuite=unit",
     "test": [
       "@test-unit",
       "@test-functional"
@@ -73,7 +73,7 @@
     "check": [
       "@validate-schema",
       "@lint",
-      "@code-fix",
+      "@phpcbf",
       "@psalm",
       "@test",
       "@clear"
