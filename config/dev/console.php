@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 use App\Console\FixturesLoadCommand;
-use App\Console\MailerCheckCommand;
 use Doctrine\Migrations\Tools\Console\Command;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\Console\Command\SchemaTool\DropCommand;
