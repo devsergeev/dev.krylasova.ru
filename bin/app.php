@@ -8,7 +8,7 @@ use Symfony\Component\Console\Application;
 
 http_response_code(500);
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../config/bootstrap.php';
 
 if (getenv('SENTRY_DSN')) {
     Sentry\init(['dsn' => getenv('SENTRY_DSN')]);

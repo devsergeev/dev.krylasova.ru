@@ -29,6 +29,7 @@
     "symfony/cache": "^5.3",
     "symfony/console": "^5.3",
     "twig/twig": "^3.3",
+    "vlucas/phpdotenv": "^5.4",
     "webmozart/assert": "^1.10"
   },
   "require-dev": {
