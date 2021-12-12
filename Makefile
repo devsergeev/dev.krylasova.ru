@@ -20,4 +20,7 @@ composer-check:
 	$(composer) check
 
 composer-app:
-	$(composer) app $(arg)
+	$(composer) app
+
+composer-app-migrate:
+	$(composer) app migrations:migrate
