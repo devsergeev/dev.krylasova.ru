@@ -1,5 +1,10 @@
+import "bootstrap/dist/css/bootstrap.css"
+import "font-awesome/css/font-awesome.min.css"
+import "@fontsource/roboto/cyrillic.css";
 import "./style.css"
-import $ from "jquery";
+
+import $ from "jquery"
+import "bootstrap/dist/js/bootstrap.bundle.js"
 
 $(function () {
     const $window = $(window), $navbar = $('header.page-header .navbar');

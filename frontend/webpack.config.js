@@ -5,8 +5,9 @@ const PROD = MODE === 'production'
 
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = PROD && require("mini-css-extract-plugin")
+const MiniCssExtractPlugin = PROD && require('mini-css-extract-plugin')
 const HtmlWebpackHarddiskPlugin = START && require('html-webpack-harddisk-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 module.exports = () => {
 
@@ -36,6 +37,9 @@ module.exports = () => {
           },
         },
       },
+      minimizer: [
+        new CssMinimizerPlugin(),
+      ],
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -57,10 +61,9 @@ module.exports = () => {
         },
         {
           test: /\.css$/i,
-          include: path.resolve(__dirname, './src'),
           use: [
             PROD ? MiniCssExtractPlugin.loader : "style-loader",
-            'css-loader'
+            'css-loader',
           ],
         },
         {
