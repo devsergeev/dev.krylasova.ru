@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css"
 import "font-awesome/css/font-awesome.min.css"
 import "@fontsource/roboto/cyrillic.css";
+import "@fontsource/roboto/latin.css";
 import "./style.css"
 
 import $ from "jquery"

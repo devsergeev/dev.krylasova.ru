@@ -14,6 +14,7 @@
 
 
 
+
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(function () {
   var $window = jquery__WEBPACK_IMPORTED_MODULE_0___default()(window),
       $navbar = jquery__WEBPACK_IMPORTED_MODULE_0___default()('header.page-header .navbar');
