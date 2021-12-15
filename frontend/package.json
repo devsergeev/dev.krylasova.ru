@@ -6,7 +6,7 @@
   "scripts": {
     "watch": "node_modules/.bin/cross-env NODE_ENV=development WEBPACK_COMMAND=watch webpack --watch --progress",
     "start": "node_modules/.bin/cross-env NODE_ENV=development WEBPACK_COMMAND=start webpack serve --progress",
-    "build": "node_modules/.bin/cross-env NODE_ENV=production WEBPACK_COMMAND=build webpack --progress",
+    "build": "npm run clear && node_modules/.bin/cross-env NODE_ENV=production WEBPACK_COMMAND=build webpack --progress",
     "clear": "rm -rf public/assets/*"
   },
   "keywords": [],
