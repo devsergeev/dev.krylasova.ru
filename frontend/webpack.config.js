@@ -38,6 +38,7 @@ module.exports = () => {
         },
       },
       minimizer: [
+        '...',
         new CssMinimizerPlugin(),
       ],
     },
@@ -53,7 +54,6 @@ module.exports = () => {
       rules: [
         {
           test: /\.(js|jsx)$/,
-          include: path.resolve(__dirname, './src'),
           loader: "babel-loader",
           options: {
             presets: ["@babel/env"],
