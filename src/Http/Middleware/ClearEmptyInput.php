@@ -22,10 +22,9 @@ class ClearEmptyInput implements MiddlewareInterface
     }
 
     /**
-     * @param null|array|object $items
-     * @return null|array|object
+     * Очистка строк из ввода функцией trim
      */
-    private static function filterStrings($items)
+    private static function filterStrings(object|array|null $items): object|array|null
     {
         if (!is_array($items)) {
             return $items;
@@ -48,6 +47,9 @@ class ClearEmptyInput implements MiddlewareInterface
         return $result;
     }
 
+    /**
+     * Очистка пустых файлов из ввода
+     */
     private static function filterFiles(array $items): array
     {
         $result = [];
@@ -58,7 +60,7 @@ class ClearEmptyInput implements MiddlewareInterface
          */
         foreach ($items as $key => $item) {
             if ($item instanceof UploadedFileInterface) {
-                if ($item->getError() !== UPLOAD_ERR_NO_FILE) {
+                if (self::fileNotEmpty($item)) {
                     $result[$key] = $item;
                 }
             } else {
@@ -67,5 +69,10 @@ class ClearEmptyInput implements MiddlewareInterface
         }
 
         return $result;
+    }
+
+    private static function fileNotEmpty(UploadedFileInterface $item): bool
+    {
+        return $item->getError() !== UPLOAD_ERR_NO_FILE;
     }
 }
