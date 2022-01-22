@@ -3,10 +3,6 @@
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
     xmlns="https://getpsalm.org/schema/config"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-
-    reportMixedIssues="true"
-    resolveFromConfigFile="true"
-    findUnusedCode="false"
     findUnusedPsalmSuppress="true"
     cacheDirectory="./var/cache/psalm.cache"
 >
@@ -26,14 +22,5 @@
     </projectFiles>
     <issueHandlers>
         <LessSpecificReturnType errorLevel="info"/>
-        <!-- https://github.com/sebastianbergmann/phpunit/issues/3742 -->
-        <InternalMethod>
-            <errorLevel type="suppress">
-                <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::method" />
-                <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::with" />
-                <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::willReturn" />
-                <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::willReturnCallback" />
-            </errorLevel>
-        </InternalMethod>
     </issueHandlers>
 </psalm>
