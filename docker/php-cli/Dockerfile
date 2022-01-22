@@ -1,4 +1,4 @@
-FROM php:8.0.10-cli
+FROM php:8.1-cli
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 # Install git
 RUN apt-get update && apt-get install -y git
