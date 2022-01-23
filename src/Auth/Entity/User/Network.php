@@ -5,20 +5,16 @@ declare(strict_types=1);
 namespace App\Auth\Entity\User;
 
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 use Webmozart\Assert\Assert;
 
-/**
- * @ORM\Embeddable
- */
+#[ORM\Embeddable]
 class Network
 {
-    /**
-     * @ORM\Column(type="string", length=16)
-     */
+    #[ORM\Column(type: 'string', length: 16)]
     private string $name;
-    /**
-     * @ORM\Column(type="string", length=16)
-     */
+
+    #[ORM\Column(type: 'string', length: 16)]
     private string $identity;
 
     public function __construct(string $name, string $identity)
@@ -29,6 +25,7 @@ class Network
         $this->identity = mb_strtolower($identity);
     }
 
+    #[Pure]
     public function isEqualTo(self $network): bool
     {
         return

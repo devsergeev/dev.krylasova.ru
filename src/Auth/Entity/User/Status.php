@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Auth\Entity\User;
 
+use JetBrains\PhpStorm\Pure;
 use Webmozart\Assert\Assert;
 
 class Status
@@ -32,11 +33,13 @@ class Status
         return new self(self::ACTIVE);
     }
 
+    #[Pure]
     public function isWait(): bool
     {
         return $this->name === self::WAIT;
     }
 
+    #[Pure]
     public function isActive(): bool
     {
         return $this->name === self::ACTIVE;
