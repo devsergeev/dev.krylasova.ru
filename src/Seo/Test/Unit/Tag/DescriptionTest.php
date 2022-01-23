@@ -13,7 +13,13 @@ class DescriptionTest extends TestCase
     public function testSuccess(): void
     {
         $tag = new Description('Описание страницы');
+
         self::assertEquals('<meta name="description" content="Описание страницы">', (string)$tag);
+        self::assertEquals('meta', $tag->getTagName());
+        self::assertEquals(
+            ['name' => 'description', 'content' => 'Описание страницы'],
+            $tag->getAttributeList()->getAttributeMap()
+        );
     }
 
     public function testEmpty(): void

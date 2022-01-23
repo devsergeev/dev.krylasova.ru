@@ -13,7 +13,13 @@ class TitleTest extends TestCase
     public function testSuccess(): void
     {
         $tag = new Title('Заголовок страницы');
+
         self::assertEquals('<title>Заголовок страницы</title>', (string)$tag);
+        self::assertEquals('title', $tag->getTagName());
+        self::assertEquals(
+            [],
+            $tag->getAttributeList()->getAttributeMap()
+        );
     }
 
     public function testEmpty(): void

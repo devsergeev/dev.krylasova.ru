@@ -22,4 +22,9 @@ class AttributeList
         );
         return $attributes ? (' ' . implode(' ', $attributes)) : '';
     }
+
+    public function getAttributeMap(): array
+    {
+        return $this->attributeMap;
+    }
 }

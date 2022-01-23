@@ -27,4 +27,14 @@ abstract class AbstractEmptyElement
     {
         return "<{$this->tagName}{$this->attributeList}>";
     }
+
+    public function getTagName(): string
+    {
+        return $this->tagName;
+    }
+
+    public function getAttributeList(): AttributeList
+    {
+        return $this->attributeList;
+    }
 }
