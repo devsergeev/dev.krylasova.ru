@@ -17,9 +17,9 @@ abstract class AbstractElement extends AbstractEmptyElement
     private string $text;
 
     #[Pure]
-    public function __construct(string $name, string $text, array $attributes = [])
+    public function __construct(string $tagName, string $text, array $attributes = [])
     {
-        parent::__construct($name, $attributes);
+        parent::__construct($tagName, $attributes);
         $this->text = $text;
     }
 

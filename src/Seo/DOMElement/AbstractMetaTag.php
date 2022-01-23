@@ -10,11 +10,11 @@ class AbstractMetaTag extends AbstractEmptyElement
 {
     private const TAG_NAME = 'meta';
 
-    public function __construct(array $attributes)
+    public function __construct(array $attributeMap)
     {
-        if (!$attributes) {
+        if (!$attributeMap) {
             throw new InvalidArgumentException('Метатег должен содержать атрибуты');
         }
-        parent::__construct(self::TAG_NAME, $attributes);
+        parent::__construct(self::TAG_NAME, $attributeMap);
     }
 }

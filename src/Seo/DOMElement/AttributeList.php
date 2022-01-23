@@ -20,6 +20,6 @@ class AttributeList
             array_keys($this->attributeMap),
             $this->attributeMap
         );
-        return $attributes ? ' ' . implode(' ', $attributes) : '';
+        return $attributes ? (' ' . implode(' ', $attributes)) : '';
     }
 }

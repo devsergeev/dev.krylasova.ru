@@ -17,9 +17,9 @@ abstract class AbstractEmptyElement
     protected AttributeList $attributeList;
 
     #[Pure]
-    public function __construct(string $name, array $attributeMap = [])
+    public function __construct(string $tagName, array $attributeMap = [])
     {
-        $this->tagName = $name;
+        $this->tagName = $tagName;
         $this->attributeList = new AttributeList($attributeMap);
     }
 
