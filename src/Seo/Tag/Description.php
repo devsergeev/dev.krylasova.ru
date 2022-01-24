@@ -11,7 +11,7 @@ class Description extends AbstractMetaTag
 {
     public function __construct(string $content)
     {
-        if (!$content) {
+        if (!(boolean)$content) {
             throw new InvalidArgumentException('Description должен быть заполнен');
         }
         parent::__construct([
