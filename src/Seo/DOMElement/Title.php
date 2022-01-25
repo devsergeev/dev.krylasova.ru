@@ -17,6 +17,7 @@ class Title extends AbstractElement
         }
         parent::__construct(
             self::TAG_NAME,
+            [],
             $text
         );
     }

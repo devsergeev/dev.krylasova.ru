@@ -6,7 +6,7 @@ namespace App\Seo\DOMElement;
 
 use InvalidArgumentException;
 
-class AbstractMetaElement extends AbstractEmptyElement
+class AbstractMetaElement extends AbstractElement
 {
     private const TAG_NAME = 'meta';
 
