@@ -6,7 +6,7 @@ namespace App\Seo\DOMElement;
 
 use InvalidArgumentException;
 
-class AbstractMetaTag extends AbstractEmptyElement
+class AbstractMetaElement extends AbstractEmptyElement
 {
     private const TAG_NAME = 'meta';
 
@@ -15,6 +15,9 @@ class AbstractMetaTag extends AbstractEmptyElement
         if (!$attributeMap) {
             throw new InvalidArgumentException('Метатег должен содержать атрибуты');
         }
-        parent::__construct(self::TAG_NAME, $attributeMap);
+        parent::__construct(
+            self::TAG_NAME,
+            $attributeMap
+        );
     }
 }

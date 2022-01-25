@@ -2,12 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Seo\Tag;
+namespace App\Seo\DOMElement;
 
-use App\Seo\DOMElement\AbstractMetaTag;
 use InvalidArgumentException;
 
-class Keywords extends AbstractMetaTag
+class Keywords extends AbstractMetaElement
 {
     public function __construct(string $content)
     {

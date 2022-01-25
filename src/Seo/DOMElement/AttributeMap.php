@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Seo\DOMElement;
 
-class AttributeList
+class AttributeMap
 {
     private array $attributeMap;
 
@@ -23,7 +23,7 @@ class AttributeList
         return $attributes ? (' ' . implode(' ', $attributes)) : '';
     }
 
-    public function getAttributeMap(): array
+    public function getAll(): array
     {
         return $this->attributeMap;
     }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Seo\Test\Unit\Tag;
 
-use App\Seo\Tag\Keywords;
+use App\Seo\DOMElement\Keywords;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -18,13 +18,13 @@ class KeywordsTest extends TestCase
         self::assertEquals('meta', $tag->getTagName());
         self::assertEquals(
             ['name' => 'keywords', 'content' => 'Ключевые слова'],
-            $tag->getAttributeList()->getAttributeMap()
+            $tag->getAttributeMap()->getAll()
         );
     }
 
     public function testEmpty(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        new Keywords('');
+        new \App\Seo\DOMElement\Keywords('');
     }
 }

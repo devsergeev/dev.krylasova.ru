@@ -14,18 +14,18 @@ use JetBrains\PhpStorm\Pure;
 abstract class AbstractEmptyElement
 {
     protected string $tagName;
-    protected AttributeList $attributeList;
+    protected AttributeMap $attributeMap;
 
     #[Pure]
     public function __construct(string $tagName, array $attributeMap = [])
     {
         $this->tagName = $tagName;
-        $this->attributeList = new AttributeList($attributeMap);
+        $this->attributeMap = new AttributeMap($attributeMap);
     }
 
     public function __toString(): string
     {
-        return "<{$this->tagName}{$this->attributeList}>";
+        return "<{$this->tagName}{$this->attributeMap}>";
     }
 
     public function getTagName(): string
@@ -33,8 +33,8 @@ abstract class AbstractEmptyElement
         return $this->tagName;
     }
 
-    public function getAttributeList(): AttributeList
+    public function getAttributeMap(): AttributeMap
     {
-        return $this->attributeList;
+        return $this->attributeMap;
     }
 }
