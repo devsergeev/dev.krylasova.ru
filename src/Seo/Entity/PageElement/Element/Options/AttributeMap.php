@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Seo\DOMElement;
+namespace App\Seo\Entity\PageElement\Element\Options;
 
 class AttributeMap
 {
@@ -13,18 +13,24 @@ class AttributeMap
         $this->attributeMap = $attributeMap;
     }
 
-    public function __toString(): string
+    public function getAll(): array
+    {
+        return $this->attributeMap;
+    }
+
+    public function renderInTag(): string
+    {
+        $string = $this->toString();
+        return $string ? (' ' . $string) : '';
+    }
+
+    private function toString(): string
     {
         $attributes = array_map(
             static fn ($name, $value) => "{$name}=\"{$value}\"",
             array_keys($this->attributeMap),
             $this->attributeMap
         );
-        return $attributes ? (' ' . implode(' ', $attributes)) : '';
-    }
-
-    public function getAll(): array
-    {
-        return $this->attributeMap;
+        return $attributes ? implode(' ', $attributes) : '';
     }
 }
