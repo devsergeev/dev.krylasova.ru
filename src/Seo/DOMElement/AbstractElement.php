@@ -16,9 +16,9 @@ use JetBrains\PhpStorm\Pure;
  */
 abstract class AbstractElement
 {
-    protected string $tagName;
-    protected AttributeMap $attributeMap;
-    protected string $text;
+    private string $tagName;
+    private AttributeMap $attributeMap;
+    private string $text;
 
     #[Pure]
     public function __construct(string $tagName, array $attributeMap = [], string $text = '')
