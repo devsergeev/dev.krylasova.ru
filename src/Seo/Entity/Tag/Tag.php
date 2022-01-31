@@ -6,7 +6,7 @@ namespace App\Seo\Entity\Tag;
 
 use JetBrains\PhpStorm\Pure;
 
-abstract class Tag
+class Tag
 {
     private string $name;
     private Type $type;

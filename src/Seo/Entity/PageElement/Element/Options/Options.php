@@ -26,7 +26,7 @@ class Options
         return $this->attributeMap;
     }
 
-    public function getText(): mixed
+    public function getText(): string
     {
         return $this->text;
     }

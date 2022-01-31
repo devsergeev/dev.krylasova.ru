@@ -29,22 +29,39 @@ class Element
 
     public function render(): string
     {
-        $html = "<{$this->tag->render()}{$this->getAttributeMap()->renderInTag()}>";
-        if ($this->tag->isPair()) {
-            $html .= "{$this->getText()}</{$this->tag->render()}>";
+        $html = $this->renderOpeningTag();
+        if ($this->tagIsPair()) {
+            $html .= "{$this->getText()}</{$this->renserClosingTag()}>";
         }
         return $html;
     }
 
     #[Pure]
-    public function getText(): string
+    private function tagIsPair(): bool
+    {
+        return $this->tag->isPair();
+    }
+
+    #[Pure]
+    private function getText(): string
     {
         return $this->options->getText();
     }
 
     #[Pure]
-    public function getAttributeMap(): AttributeMap
+    private function getAttributeMap(): AttributeMap
     {
         return $this->options->getAttributeMap();
+    }
+
+    private function renderOpeningTag(): string
+    {
+        return "<{$this->tag->render()}{$this->getAttributeMap()->renderInTag()}>";
+    }
+
+    #[Pure]
+    private function renserClosingTag(): string
+    {
+        return "{$this->getText()}</{$this->tag->render()}>";
     }
 }

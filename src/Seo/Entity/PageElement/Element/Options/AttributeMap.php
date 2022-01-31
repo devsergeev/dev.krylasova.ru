@@ -18,6 +18,11 @@ class AttributeMap
         return $this->attributeMap;
     }
 
+    public function has(string $key): bool
+    {
+        return isset($this->attributeMap[$key]);
+    }
+
     public function renderInTag(): string
     {
         $string = $this->toString();
