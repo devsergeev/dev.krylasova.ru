@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Seo\Entity\Tag;
 
-use JetBrains\PhpStorm\Pure;
-
 class Tag
 {
     private string $name;
@@ -17,7 +15,7 @@ class Tag
         $this->type = $type;
     }
 
-    public function render(): string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -25,17 +23,5 @@ class Tag
     public function getType(): Type
     {
         return $this->type;
-    }
-
-    #[Pure]
-    public function isPair(): bool
-    {
-        return $this->type->isPair();
-    }
-
-    #[Pure]
-    public function isSingle(): bool
-    {
-        return $this->type->isSingle();
     }
 }
