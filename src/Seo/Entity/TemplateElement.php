@@ -38,7 +38,12 @@ class TemplateElement
         return $this->text;
     }
 
-    public function toElement(): Element
+    public function render(): string
+    {
+        return $this->toElement()->render();
+    }
+
+    private function toElement(): Element
     {
         if ($this->getTemplate()->getRequired()->textIsRequired() && !$this->getText()) {
             throw new InvalidArgumentException("Обязательно должен быть указан текст элемента");
