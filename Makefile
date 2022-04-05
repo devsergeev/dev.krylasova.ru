@@ -1,3 +1,6 @@
+docker-compose-up:
+	docker-compose -f ./docker/docker-compose.yml up
+
 docker-exec = docker-compose -f ./docker/docker-compose.yml exec
 docker-run = docker-compose -f ./docker/docker-compose.yml run --rm
 php-apache = $(docker-exec) php-apache
