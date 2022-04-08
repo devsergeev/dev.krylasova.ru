@@ -10,7 +10,7 @@ use App\Seo\Entity\Template\Template;
 use InvalidArgumentException;
 use JetBrains\PhpStorm\Pure;
 
-class TemplateElement
+class ElementTemplate
 {
     private Template $template;
     private Attributes $attributes;
@@ -56,7 +56,7 @@ class TemplateElement
         }
 
         return new Element(
-            $this->getTemplate()->getElement()->getTag(),
+            $this->getTemplate()->getTag(),
             $this->mergeAttributes(),
             $this->mergeText()
         );
@@ -65,7 +65,7 @@ class TemplateElement
     #[Pure]
     private function mergeAttributes(): Attributes
     {
-        $defaultAttributes = $this->getTemplate()->getElement()->getAttributes()->getAll();
+        $defaultAttributes = $this->getTemplate()->getAttributes()->getAll();
         $customAttributes = $this->getAttributes()->getAll();
         return new Attributes(array_merge($defaultAttributes, $customAttributes));
     }
@@ -76,6 +76,6 @@ class TemplateElement
         if ($this->getText()) {
             return $this->getText();
         }
-        return $this->getTemplate()->getElement()->getText();
+        return $this->getTemplate()->getText();
     }
 }

@@ -8,7 +8,7 @@ use App\Seo\Entity\Tag\Tag;
 use App\Seo\Entity\Tag\Type;
 use App\Seo\Entity\Template\Required;
 use App\Seo\Entity\Template\Template;
-use App\Seo\Entity\TemplateElement;
+use App\Seo\Entity\ElementTemplate;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -18,18 +18,16 @@ class TemplateElementTest extends TestCase
     {
         $template = new Template(
             'Метатег Description',
-            new Element(
-                new Tag('meta', new Type(Type::SINGLE)),
-                new Attributes([
-                    'name' => 'description'
-                ])
-            ),
-            new Required(['content'])
+            new Required(['content']),
+            new Tag('meta', new Type(Type::SINGLE)),
+            new Attributes([
+                'name' => 'description'
+            ]),
         );
 
         $customAttributes = new Attributes(['content' => 'Описание главной страницы раскрыто в этом тексте']);
 
-        $templateElement = new TemplateElement(
+        $templateElement = new ElementTemplate(
             $template,
             $customAttributes
         );
@@ -44,13 +42,11 @@ class TemplateElementTest extends TestCase
     {
         $template = new Template(
             'Метатег Description',
-            new Element(
-                new Tag('meta', new Type(Type::SINGLE)),
-                new Attributes([
-                    'name' => 'description'
-                ])
-            ),
-            new Required(['content'], true)
+            new Required(['content'], true),
+            new Tag('meta', new Type(Type::SINGLE)),
+            new Attributes([
+                'name' => 'description'
+            ])
         );
 
         $customAttributes = new Attributes([
@@ -59,7 +55,7 @@ class TemplateElementTest extends TestCase
 
         $this->expectException(InvalidArgumentException::class);
 
-        (new TemplateElement(
+        (new ElementTemplate(
             $template,
             $customAttributes
         ))->render();

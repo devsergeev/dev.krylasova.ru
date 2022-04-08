@@ -28,4 +28,9 @@ class Type
     {
         return $this->type === self::PAIR;
     }
+
+    public function toString(): string
+    {
+        return $this->type;
+    }
 }
