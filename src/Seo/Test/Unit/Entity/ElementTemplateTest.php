@@ -3,7 +3,6 @@
 namespace App\Seo\Test\Unit\Entity;
 
 use App\Seo\Entity\Element\Attributes;
-use App\Seo\Entity\Element\Element;
 use App\Seo\Entity\Tag\Tag;
 use App\Seo\Entity\Tag\Type;
 use App\Seo\Entity\Template\Required;
@@ -12,7 +11,7 @@ use App\Seo\Entity\ElementTemplate;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
-class TemplateElementTest extends TestCase
+class ElementTemplateTest extends TestCase
 {
     public function testSuccess()
     {
@@ -20,9 +19,7 @@ class TemplateElementTest extends TestCase
             'Метатег Description',
             new Required(['content']),
             new Tag('meta', new Type(Type::SINGLE)),
-            new Attributes([
-                'name' => 'description'
-            ]),
+            new Attributes(['name' => 'description']),
         );
 
         $customAttributes = new Attributes(['content' => 'Описание главной страницы раскрыто в этом тексте']);
@@ -42,22 +39,22 @@ class TemplateElementTest extends TestCase
     {
         $template = new Template(
             'Метатег Description',
-            new Required(['content'], true),
-            new Tag('meta', new Type(Type::SINGLE)),
+            new Required([], true),
+            new Tag('button', new Type(Type::PAIR)),
             new Attributes([
-                'name' => 'description'
+                'disabled'
             ])
         );
 
-        $customAttributes = new Attributes([
-            'notContent' => 'Описание главной страницы раскрыто в этом тексте'
-        ]);
+        $customAttributes = new Attributes(['name' => 'sale']);
+
+        $templateElement = new ElementTemplate(
+            $template,
+            $customAttributes,
+        );
 
         $this->expectException(InvalidArgumentException::class);
-
-        (new ElementTemplate(
-            $template,
-            $customAttributes
-        ))->render();
+        $this->expectExceptionMessage('Обязательно должен быть указан текст элемента');
+        $templateElement->render();
     }
 }

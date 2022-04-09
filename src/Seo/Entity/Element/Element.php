@@ -6,7 +6,6 @@ namespace App\Seo\Entity\Element;
 
 use App\Seo\Entity\Tag\Tag;
 use InvalidArgumentException;
-use JetBrains\PhpStorm\Pure;
 
 class Element
 {
@@ -27,15 +26,6 @@ class Element
         $this->text = $text;
     }
 
-    public function render(): string
-    {
-        $html = $this->renderOpeningTag();
-        if ($this->tag->getType()->isPair()) {
-            $html .= "{$this->getText()}</{$this->renderClosingTag()}>";
-        }
-        return $html;
-    }
-
     public function getTag(): Tag
     {
         return $this->tag;
@@ -51,15 +41,13 @@ class Element
         return $this->text;
     }
 
-    private function renderOpeningTag(): string
+    public function render(): string
     {
-        return "<{$this->tag->getName()}{$this->renderAttributes()}>";
-    }
-
-    #[Pure]
-    private function renderClosingTag(): string
-    {
-        return "{$this->getText()}</{$this->tag->getName()}>";
+        $html = "<{$this->tag->getName()}{$this->renderAttributes()}>";
+        if ($this->tag->getType()->isPair()) {
+            $html .= "{$this->getText()}</{$this->tag->getName()}>";
+        }
+        return $html;
     }
 
     private function renderAttributes(): string
