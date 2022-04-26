@@ -29,7 +29,7 @@ class Type
         return $this->type === self::PAIR;
     }
 
-    public function toString(): string
+    public function __toString(): string
     {
         return $this->type;
     }

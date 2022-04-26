@@ -11,7 +11,7 @@ class Required
 
     public function __construct(
         array $attributes,
-        bool $text = false
+        bool  $text = false,
     )
     {
         $this->attributes = $attributes;
@@ -26,5 +26,16 @@ class Required
     public function getAttributes(): array
     {
         return $this->attributes;
+    }
+
+    public function toJson(): string
+    {
+        return json_encode([$this->attributes, $this->text]);
+    }
+
+    public static function fromJson(string $jsonString): self
+    {
+        [$attributes, $text] = json_encode($jsonString);
+        return new self($attributes, $text);
     }
 }

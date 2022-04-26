@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Seo\Test\Unit\Entity\Element;
+namespace App\Seo\Test\Unit\Entity;
 
-use App\Seo\Entity\Element\Attributes;
+use App\Seo\Entity\Attributes;
 use PHPUnit\Framework\TestCase;
 
 class AttributesTest extends TestCase
@@ -16,8 +16,8 @@ class AttributesTest extends TestCase
         ]);
 
         $this->assertEquals(
-            'name="description" logicalAttribute otherLogicalAttribute',
-            $attributes->toString()
+            ' name="description" logicalAttribute otherLogicalAttribute',
+            $attributes->render()
         );
     }
 }
