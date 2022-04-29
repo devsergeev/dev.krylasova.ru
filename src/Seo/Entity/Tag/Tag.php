@@ -30,7 +30,7 @@ class Tag
         $this->type = $type;
     }
 
-    public function getId(): int
+    private function getId(): int
     {
         return $this->id;
     }

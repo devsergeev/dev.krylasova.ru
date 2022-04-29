@@ -25,12 +25,12 @@ class Page
         $this->code = $code;
     }
 
-    public function getId(): int
+    private function getId(): int
     {
         return $this->id;
     }
 
-    public function getCode(): string
+    private function getCode(): string
     {
         return $this->code;
     }

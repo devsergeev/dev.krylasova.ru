@@ -55,12 +55,12 @@ class Template
         $this->text = $text;
     }
 
-    public function getId(): int
+    private function getId(): int
     {
         return $this->id;
     }
 
-    public function getName(): string
+    private function getName(): string
     {
         return $this->name;
     }

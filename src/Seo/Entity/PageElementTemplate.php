@@ -43,7 +43,7 @@ class PageElementTemplate
         }
 
         foreach ($template->getRequired()->getAttributes() as $value) {
-            if (!$customAttributes->has($value)) {
+            if (!$customAttributes->hasAttribute($value)) {
                 throw new InvalidArgumentException("Атрибут `{$value}` является обязательным, но не задан");
             }
         }
@@ -65,45 +65,45 @@ class PageElementTemplate
         return $this->id;
     }
 
-    public function getPage(): Page
-    {
-        return $this->page;
-    }
-
-    public function getTemplate(): Template
-    {
-        return $this->template;
-    }
-
-    public function getCustomAttributes(): Attributes
-    {
-        return $this->customAttributes;
-    }
-
-    public function getCustomText(): ?string
-    {
-        return $this->customText;
-    }
-
     public function render(): string
     {
         $html = "<{$this->template->getTag()->getName()}{$this->getAttributes()->render()}>";
         if ($this->template->getTag()->getType()->isPair()) {
-            $html .= "{$this->mergeText()}</{$this->template->getTag()->getName()}>";
+            $html .= "{$this->getText()}</{$this->template->getTag()->getName()}>";
         }
         return $html;
+    }
+
+    private function getPage(): Page
+    {
+        return $this->page;
+    }
+
+    private function getTemplate(): Template
+    {
+        return $this->template;
+    }
+
+    private function getCustomAttributes(): Attributes
+    {
+        return $this->customAttributes;
+    }
+
+    private function getCustomText(): ?string
+    {
+        return $this->customText;
     }
 
     #[Pure]
     private function getAttributes(): Attributes
     {
-        $defaultAttributes = $this->getTemplate()->getDefaultAttributes()->getAll();
-        $customAttributes = $this->getCustomAttributes()->getAll();
+        $defaultAttributes = $this->getTemplate()->getDefaultAttributes()->toArray();
+        $customAttributes = $this->getCustomAttributes()->toArray();
         return new Attributes(array_merge($defaultAttributes, $customAttributes));
     }
 
     #[Pure]
-    private function mergeText(): ?string
+    private function getText(): ?string
     {
         if ($this->getCustomText()) {
             return $this->getCustomText();

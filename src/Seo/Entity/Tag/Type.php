@@ -19,6 +19,16 @@ class Type
         $this->type = $type;
     }
 
+    public static function single(): self
+    {
+        return new self(self::SINGLE);
+    }
+
+    public static function pair(): self
+    {
+        return new self(self::PAIR);
+    }
+
     public function isSingle(): bool
     {
         return $this->type === self::SINGLE;
