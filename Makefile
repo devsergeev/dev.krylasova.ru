@@ -34,17 +34,17 @@ terminal:
 	$(php-cli) /bin/bash
 
 #composer
-install:
+composer-install:
 	$(composer) install
-outdated:
+composer-outdated:
 	$(composer) outdated --direct
-update:
+composer-update:
 	$(composer) update
-check:
+composer-check:
 	$(composer) check
-test:
+composer-test:
 	$(composer) test
-clear:
+composer-clear:
 	$(composer) clear
-migrate:
+composer-migrate:
 	$(composer) app migrations:migrate
